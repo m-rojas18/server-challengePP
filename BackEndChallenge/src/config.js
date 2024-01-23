@@ -1,4 +1,7 @@
 const config ={
+    app: {
+        port: process.env.PORT || 4000
+    },
     db:{
         host: "",
         user: "",
@@ -6,7 +9,6 @@ const config ={
         database: "",
         connectTimeout: 60000
     },
-    listPerPage: 10,
 };
 
 module.exports = config;
