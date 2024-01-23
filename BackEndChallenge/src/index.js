@@ -13,11 +13,8 @@ app.use(express.json());
 
 //Rutas
 
-app.use('/api/tasks',tasksRouter)
+app.use('/',tasksRouter);
 // app.use(cors())
-app.get('/', (req, res) => {
-  res.send('Adios World!')
-})
 
 module.exports = app;
 app.listen(port, () => {
