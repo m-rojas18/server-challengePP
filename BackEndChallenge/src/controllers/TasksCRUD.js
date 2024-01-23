@@ -35,9 +35,22 @@ exports.saveNewTask = async(req, res) => {
 }
 
 exports.deleteAllTasks = async(req, res) => {
-
+    try {
+        const connection = await mysql.createConnection(config.db);
+        const result = await connection.execute("DELETE FROM tasks");
+        res.json({response:"Deleted Success"});
+    } catch (error) {
+        console.error('Error executing SELECT query:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 }
 
 exports.deleteSelectedTasks = async(req, res) => {
-
+    try {
+        const connection = await mysql.createConnection(config.db);
+        const result = await connection.execute("DELETE FROM tasks where state = 1");
+        res.json({response:"Deleted selected Success"});
+    } catch (error) {
+        
+    }
 }

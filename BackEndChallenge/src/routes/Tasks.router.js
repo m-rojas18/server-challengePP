@@ -6,6 +6,6 @@ const tasksController = require("../controllers/TasksCRUD");
 router.get("/", tasksController.getAllTasks);
 router.post("/api/savetask", tasksController.saveNewTask);
 router.delete("/api/deleteAllTasks", tasksController.deleteAllTasks);
-router.delete("/api/eleteSelectedTasks", tasksController.deleteSelectedTasks);
+router.delete("/api/deleteSelectedTasks", tasksController.deleteSelectedTasks);
 
 module.exports = router;
