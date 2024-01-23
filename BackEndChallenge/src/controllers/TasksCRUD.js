@@ -21,7 +21,17 @@ exports.getAllTasks = async( req,res) => {
 }
 
 exports.saveNewTask = async(req, res) => {
-
+    try {
+        const connection = await mysql.createConnection(config.db);
+        //get data from body
+        const {descriptionTask, state} = req.body;
+        const data = await connection.execute('INSERT INTO tasks (descriptionTask, state) VALUES (?, ?)',[descriptionTask, state])
+        res.json({respone: "Success"});
+    } catch (error) {
+        console.error('Error executing SELECT query:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+    
 }
 
 exports.deleteAllTasks = async(req, res) => {
